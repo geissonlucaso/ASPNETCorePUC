@@ -1,3 +1,6 @@
+using ExemploASPNETCorePUC.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace ExemploASPNETCorePUC
 {
     public class Program
@@ -13,6 +16,10 @@ namespace ExemploASPNETCorePUC
             builder.Services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
 
+            // Configuração da conexão com o banco de dados. Injeção de dependência.
+            builder.Services.AddDbContext<AppDbContext>(options => 
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
