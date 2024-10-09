@@ -8,7 +8,7 @@ namespace ExemploASPNETCorePUC.Controllers
     {
         private readonly AppDbContext _context;
 
-        public VeiculosController(AppDbContext context) 
+        public VeiculosController(AppDbContext context)
         {
             _context = context;
         }
@@ -67,6 +67,27 @@ namespace ExemploASPNETCorePUC.Controllers
             }
 
             return View();
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var veiculo = await _context.Veiculos.FindAsync(id);
+
+            if (veiculo == null)
+                return NotFound();
+
+            return View(veiculo);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+
         }
     }
 }
