@@ -24,5 +24,7 @@ namespace ExemploASPNETCorePUC.Models
         [Display(Name = "Ano do Modelo")]
         public int AnoModelo { get; set; }
 
+        public ICollection<Consumo> Consumos { get; set; }
+
     }
 }
