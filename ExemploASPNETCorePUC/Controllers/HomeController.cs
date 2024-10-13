@@ -15,7 +15,8 @@ namespace ExemploASPNETCorePUC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Veiculos");
+            //return View();
         }
 
         public IActionResult Privacy()
